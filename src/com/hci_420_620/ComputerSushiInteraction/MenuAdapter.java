@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MenuAdapter extends BaseExpandableListAdapter {
 	private Context _context;
@@ -91,10 +92,11 @@ public class MenuAdapter extends BaseExpandableListAdapter {
         TextView itemNameView = (TextView) convertView.findViewById(R.id.itemName);
         TextView itemDescView = (TextView) convertView.findViewById(R.id.itemDescription);
         TextView itemPriceView = (TextView) convertView.findViewById(R.id.itemPrice);
- 
+        
         itemNameView.setText(itemName);
         itemDescView.setText(itemDescription);
         itemPriceView.setText(itemPrice.toString());
+        
         
         return convertView;
 	}

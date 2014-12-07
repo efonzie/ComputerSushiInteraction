@@ -29,7 +29,7 @@ public class MenuSection {
 		return itemList.size();
 	}
 
-	public Object getItem(int childPosition) {
+	public MenuItem getItem(int childPosition) {
 		return itemList.get(childPosition);
 	}
 }

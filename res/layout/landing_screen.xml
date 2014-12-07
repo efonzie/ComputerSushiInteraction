@@ -8,27 +8,36 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:screenOrientation="landscape"
+    android:background="#adfaff"
     tools:context="com.hci620.touchscreensushi.LandingScreen" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="15dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/landing_screen_sushi" />
+
+    <Button
+        android:id="@+id/beginOrdering"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/begin_ordering_button"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:onClick="beginOrdering"
+        android:text="StartOrdering" />
 
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="ComputerSushiInteraction"
+        android:text="Computer Sushi Interaction"
         android:textSize="@dimen/abc_text_size_large_material" />
-    
-    <Button
-        android:id="@+id/beginOrdering"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-		android:layout_below="@+id/welcomeText"
-        android:onClick="beginOrdering"
-        android:text="StartOrdering" />
-
 
 </RelativeLayout>
