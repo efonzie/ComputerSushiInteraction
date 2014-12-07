@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.hci_420_620.computersushiinteraction.LandingScreen" >
+    tools:context="com.hci_420_620.ComputerSushiInteraction.LandingScreen" >
 
     <TextView
         android:layout_width="wrap_content"

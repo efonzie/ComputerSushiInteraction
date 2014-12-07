@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.hci_420_620.computersushiinteraction.R;
+import com.hci_420_620.ComputerSushiInteraction.R;
 
 
 public class LandingScreen extends ActionBarActivity {
@@ -16,7 +16,6 @@ public class LandingScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_screen);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
