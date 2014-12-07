@@ -1636,6 +1636,8 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020033;
     }
     public static final class id {
+        public static final int RelativeLayout1=0x7f090041;
+        public static final int SectionName=0x7f090047;
         public static final int action_bar=0x7f090033;
         public static final int action_bar_activity_content=0x7f090003;
         public static final int action_bar_container=0x7f090032;
@@ -1649,9 +1651,10 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f090041;
+        public static final int action_settings=0x7f090049;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f090014;
+        public static final int beginOrdering=0x7f090043;
         public static final int beginning=0x7f09001b;
         public static final int bottom=0x7f09001e;
         public static final int checkbox=0x7f09002b;
@@ -1670,8 +1673,12 @@ containing a value of this type.
         public static final int icon=0x7f090028;
         public static final int ifRoom=0x7f090016;
         public static final int image=0x7f090025;
+        public static final int itemDescription=0x7f090046;
+        public static final int itemName=0x7f090044;
+        public static final int itemPrice=0x7f090045;
         public static final int listMode=0x7f09000a;
         public static final int list_item=0x7f090027;
+        public static final int menuList=0x7f090048;
         public static final int middle=0x7f09001d;
         public static final int never=0x7f090017;
         public static final int none=0x7f09000f;
@@ -1700,6 +1707,7 @@ containing a value of this type.
         public static final int top=0x7f09001f;
         public static final int up=0x7f090001;
         public static final int useLogo=0x7f090013;
+        public static final int welcomeText=0x7f090042;
         public static final int withText=0x7f090018;
         public static final int wrap_content=0x7f090009;
     }
@@ -1753,7 +1761,10 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030015;
         public static final int abc_simple_dropdown_hint=0x7f030016;
         public static final int landing_screen=0x7f030017;
-        public static final int support_simple_spinner_dropdown_item=0x7f030018;
+        public static final int menu_item=0x7f030018;
+        public static final int menu_section=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
+        public static final int sushi_menu=0x7f03001b;
     }
     public static final class menu {
         public static final int landing_screen=0x7f0c0000;

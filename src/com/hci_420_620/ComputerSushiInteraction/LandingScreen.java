@@ -1,21 +1,22 @@
+
 package com.hci_420_620.ComputerSushiInteraction;
 
+import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.hci_420_620.ComputerSushiInteraction.R;
-
 
 public class LandingScreen extends ActionBarActivity {
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landing_screen);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
