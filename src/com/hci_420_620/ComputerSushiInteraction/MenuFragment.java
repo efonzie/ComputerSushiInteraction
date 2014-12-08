@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
+import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.TextView;
 import android.widget.Button;
 
@@ -24,6 +25,9 @@ public class MenuFragment extends Fragment{
 	ExpandableListView expListView;
 	ArrayList<MenuSection> menuSections;
 	MenuItem selectedItem;
+	
+	public int selectedGroupID = -1; //group ID of the selected item
+	public int selectedChildID = -1; //child id of the selected item
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -46,12 +50,55 @@ public class MenuFragment extends Fragment{
 		    	if(detailFrag != null){
 		    		MenuItem item = (MenuItem)listAdapter.getChild(groupPosition, childPosition);
 		    		selectedItem = item;
+		    		
+		    		int index = parent.getFlatListPosition(ExpandableListView.getPackedPositionForChild(groupPosition, childPosition));
+		    		parent.setItemChecked(index, true);
+		    		
+		    		selectedGroupID = groupPosition;
+		    		selectedChildID = childPosition;
+		    		
 		    		detailFrag.updateDetails(item);
 		    	}
 		    	
 		    	return false;
 		    }
 		});  
+		
+		expListView.setOnGroupClickListener(new OnGroupClickListener() {
+			@Override
+			public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+				if(parent.isGroupExpanded(groupPosition)){
+					
+					parent.collapseGroup(groupPosition);
+					if(selectedGroupID == groupPosition){
+						parent.clearChoices();
+					}
+				}
+				else{
+
+					parent.expandGroup(groupPosition);
+					
+					if(selectedGroupID == groupPosition){
+						long packedChildPos = ExpandableListView.getPackedPositionForChild(selectedGroupID, selectedChildID);
+						int index = parent.getFlatListPosition(packedChildPos);
+			    		parent.setItemChecked(index, true);
+					}
+					
+				}
+				
+				if(selectedChildID != -1 && selectedGroupID != -1 && selectedGroupID != groupPosition){
+					if(parent.isGroupExpanded(selectedGroupID)){
+						long packedChildPos = ExpandableListView.getPackedPositionForChild(selectedGroupID, selectedChildID);
+						int index = parent.getFlatListPosition(packedChildPos);
+			    		parent.setItemChecked(index, true);
+			    		return true;
+					}
+				}
+				
+				return true;
+				
+			}
+		});
 		
 		return view;
 	}
