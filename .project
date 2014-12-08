@@ -30,4 +30,10 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>APPCOMPATPATH</name>
+			<value>file:/C:/Users/Sam/Desktop/adt-bundle-windows-x86_64-20140702/sdk/extras/android/support/v7/appcompat/libs</value>
+		</variable>
+	</variableList>
 </projectDescription>
