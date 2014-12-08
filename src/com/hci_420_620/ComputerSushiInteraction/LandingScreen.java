@@ -38,6 +38,6 @@ public class LandingScreen extends Activity {
     }
     
     public void beginOrdering(View view) {
-    	startActivity(new Intent(this, SushiMenu.class));
+    	startActivity(new Intent(this, MenuActivity.class));
     }
 }

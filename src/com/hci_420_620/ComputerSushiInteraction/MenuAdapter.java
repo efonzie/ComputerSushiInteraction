@@ -2,6 +2,7 @@ package com.hci_420_620.ComputerSushiInteraction;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -14,7 +15,7 @@ public class MenuAdapter extends BaseExpandableListAdapter {
 	private Context _context;
 	private List<MenuSection> _menuSections;
 
-	public MenuAdapter(SushiMenu context, List<MenuSection> menuSections) {
+	public MenuAdapter(Activity context, List<MenuSection> menuSections) {
 		this._context = context;
 		this._menuSections = menuSections;
 	}

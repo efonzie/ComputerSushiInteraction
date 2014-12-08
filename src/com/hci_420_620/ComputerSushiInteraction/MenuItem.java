@@ -4,7 +4,7 @@ public class MenuItem {
 	String name;
 	String description;
 	double price;
-	int imageId;
+	int imageId = -1;
 	
 	public MenuItem(String name, String description, double price) {
 		super();
