@@ -1,7 +1,7 @@
 
 package com.hci_420_620.ComputerSushiInteraction;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class LandingScreen extends ActionBarActivity {
+public class LandingScreen extends Activity {
 	//testing commit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
