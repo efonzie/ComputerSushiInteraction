@@ -10,7 +10,7 @@ import android.view.View;
 
 
 public class LandingScreen extends ActionBarActivity {
-
+	//testing commit
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
