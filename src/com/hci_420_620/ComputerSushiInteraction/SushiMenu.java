@@ -3,19 +3,24 @@ package com.hci_420_620.ComputerSushiInteraction;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class SushiMenu extends ActionBarActivity {
+public class SushiMenu extends Activity {
 	MenuAdapter listAdapter;
 	ExpandableListView expListView;
 	List<MenuSection> menuSections;
+	MenuItem selectedItem;
+	List<MenuItem> currentOrder;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        currentOrder = new ArrayList<MenuItem>();
         setContentView(R.layout.sushi_menu);
         expListView = (ExpandableListView) findViewById(R.id.menuList);
         prepareMenu();
@@ -27,18 +32,45 @@ public class SushiMenu extends ActionBarActivity {
 			public boolean onChildClick(ExpandableListView parent, View v,int groupPosition, int childPosition, long id) {
 				MenuSection section = (MenuSection) parent.getAdapter().getItem(groupPosition);
 				MenuItem item = section.getItem(childPosition);
-				int imageId = item.getImageId();
-				
-				View menuImageView = findViewById(R.id.menuItemImage);
-				
-				menuImageView.setBackgroundResource(imageId);
-				
+				setSelectedItem(item);
 				return false;
 			}
 		});
     }
 
-    public void prepareMenu() {
+    protected void setSelectedItem(MenuItem item) {
+    	// set item
+		selectedItem = item;
+		
+		// set item image
+		int imageId = item.getImageId();
+		View itemImageView = findViewById(R.id.menuDetailsItemImage);
+		itemImageView.setBackgroundResource(imageId);
+		
+		// set item name
+		String itemName = item.getName();
+		TextView itemNameView = (TextView) findViewById(R.id.menuDetailsItemName);
+		itemNameView.setText(itemName);
+		
+		// set item name
+		String itemPrice = item.getPriceString();
+		TextView itemPriceView = (TextView) findViewById(R.id.menuDetailsItemPrice);
+		itemPriceView.setText(itemPrice);
+		
+		// set item name
+		String itemDesc = item.getDescription();
+		TextView itemDescView = (TextView) findViewById(R.id.menuDetailsItemDesc);
+		itemDescView.setText(itemDesc);
+	}
+    
+    public void addSelectedItemToOrder(View view){
+    	this.currentOrder.add(this.selectedItem);
+    	String itemName = selectedItem.getName();
+    	String toastString = "'" + itemName + "' has been added to your order.";
+    	addToast(toastString);
+    }
+    
+	public void prepareMenu() {
     	menuSections = new ArrayList<MenuSection>();
     	
     	
@@ -70,4 +102,9 @@ public class SushiMenu extends ActionBarActivity {
     	menuSections.add(dessert);
     	
     }
+
+	public void addToast(String toastString){
+    	Toast itemAddedToast = Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT);
+    	itemAddedToast.show();
+	}
 }

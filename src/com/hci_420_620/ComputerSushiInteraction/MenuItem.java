@@ -24,6 +24,11 @@ public class MenuItem {
 	public double getPrice() {
 		return price;
 	}
+	
+	public String getPriceString() {
+		return String.format("$%.2f",price);
+	}
+	
 	public void setPrice(double price) {
 		this.price = price;
 	}

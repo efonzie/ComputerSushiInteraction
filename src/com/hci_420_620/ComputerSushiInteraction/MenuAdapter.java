@@ -79,8 +79,7 @@ public class MenuAdapter extends BaseExpandableListAdapter {
         MenuItem menuItem = (MenuItem) getChild(groupPosition, childPosition);
         String itemName = menuItem.getName();
         String itemDescription = menuItem.getDescription();
-        Double itemPriceValue = menuItem.getPrice();
-        String itemPrice = String.format("$%.3f",itemPriceValue);
+        String itemPrice = menuItem.getPriceString();
  
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
