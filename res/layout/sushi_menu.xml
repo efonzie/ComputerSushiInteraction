@@ -22,8 +22,7 @@
                     android:contentDescription="Menu item image"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5"
-                    android:src="@drawable/landing_screen_sushi" />
+                    android:layout_weight="5"/>
 
 				<TextView
 				    android:id="@+id/itemName"
@@ -35,6 +34,16 @@
 				    android:paddingTop="5dp"
 				    android:text="This is jsut test text"
 				    android:textSize="17sp" />
+				
+				<Button
+					android:id="@+id/addItemToOrder"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@drawable/begin_ordering_button"
+					android:layout_below="@+id/imageView1"
+					android:layout_centerHorizontal="true"
+					android:onClick="beginOrdering"
+					android:text="StartOrdering" />
                 
             </LinearLayout>
  

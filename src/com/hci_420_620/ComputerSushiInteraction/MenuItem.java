@@ -4,7 +4,7 @@ public class MenuItem {
 	String name;
 	String description;
 	double price;
-	String imagePath;
+	int imageId;
 	
 	public MenuItem(String name, String description, double price) {
 		super();
@@ -13,12 +13,12 @@ public class MenuItem {
 		this.price = price;
 	}
 	
-	public String getImagePath() {
-		return imagePath;
+	public int getImageId() {
+		return this.imageId;
 	}
 
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+	public void setImageId(int image) {
+		this.imageId = image;
 	}
 
 	public double getPrice() {

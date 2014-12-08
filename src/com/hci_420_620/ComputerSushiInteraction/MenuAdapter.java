@@ -1,7 +1,5 @@
 package com.hci_420_620.ComputerSushiInteraction;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -11,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MenuAdapter extends BaseExpandableListAdapter {
 	private Context _context;
@@ -82,7 +79,8 @@ public class MenuAdapter extends BaseExpandableListAdapter {
         MenuItem menuItem = (MenuItem) getChild(groupPosition, childPosition);
         String itemName = menuItem.getName();
         String itemDescription = menuItem.getDescription();
-        Double itemPrice = menuItem.getPrice();
+        Double itemPriceValue = menuItem.getPrice();
+        String itemPrice = String.format("$%.3f",itemPriceValue);
  
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -95,7 +93,7 @@ public class MenuAdapter extends BaseExpandableListAdapter {
         
         itemNameView.setText(itemName);
         itemDescView.setText(itemDescription);
-        itemPriceView.setText(itemPrice.toString());
+        itemPriceView.setText(itemPrice);
         
         
         return convertView;

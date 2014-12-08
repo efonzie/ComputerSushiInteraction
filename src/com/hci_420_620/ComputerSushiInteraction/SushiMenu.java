@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 public class SushiMenu extends ActionBarActivity {
 	MenuAdapter listAdapter;
@@ -26,6 +25,14 @@ public class SushiMenu extends ActionBarActivity {
 			
 			@Override
 			public boolean onChildClick(ExpandableListView parent, View v,int groupPosition, int childPosition, long id) {
+				MenuSection section = (MenuSection) parent.getAdapter().getItem(groupPosition);
+				MenuItem item = section.getItem(childPosition);
+				int imageId = item.getImageId();
+				
+				View menuImageView = findViewById(R.id.menuItemImage);
+				
+				menuImageView.setBackgroundResource(imageId);
+				
 				return false;
 			}
 		});
@@ -37,11 +44,11 @@ public class SushiMenu extends ActionBarActivity {
     	
     	MenuSection nigiri = new MenuSection("Nigiri");
     	nigiri.addItem(new MenuItem("Yellowtail", "Yellowtail served over rice", 3.50));
-    	nigiri.getItem(0).setImagePath("@drawable/nigiri_hamachi");
+    	nigiri.getItem(0).setImageId(R.drawable.nigiri_hamachi);
     	nigiri.addItem(new MenuItem("Tuna", "Tuna served over rice", 3.50));
-    	nigiri.getItem(1).setImagePath("@drawable/nigiri_maguro");
-    	nigiri.addItem(new MenuItem("Albacore", "Yellowtail served over rice", 3.50));
-    	nigiri.getItem(2).setImagePath("@drawable/nigiri_albacore");
+    	nigiri.getItem(1).setImageId(R.drawable.nigiri_maguro);
+    	nigiri.addItem(new MenuItem("Albacore", "Albacore served over rice", 3.50));
+    	nigiri.getItem(2).setImageId(R.drawable.nigiri_albacore);
     	
     	MenuSection rolls = new MenuSection("Long Rolls and Hand Rolls");
     	rolls.addItem(new MenuItem("Roll 1", "Roll 1 description", 7.50));

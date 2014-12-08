@@ -1633,12 +1633,13 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020030;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020031;
         public static final int abc_textfield_search_material=0x7f020032;
-        public static final int begin_ordering_button=0x7f020033;
-        public static final int ic_launcher=0x7f020034;
-        public static final int landing_screen_sushi=0x7f020035;
-        public static final int nigiri_albacore=0x7f020036;
-        public static final int nigiri_hamachi=0x7f020037;
-        public static final int nigiri_maguro=0x7f020038;
+        public static final int add_to_order_button=0x7f020033;
+        public static final int begin_ordering_button=0x7f020034;
+        public static final int ic_launcher=0x7f020035;
+        public static final int landing_screen_sushi=0x7f020036;
+        public static final int nigiri_albacore=0x7f020037;
+        public static final int nigiri_hamachi=0x7f020038;
+        public static final int nigiri_maguro=0x7f020039;
     }
     public static final class id {
         public static final int RelativeLayout1=0x7f090041;
@@ -1656,8 +1657,9 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f09004d;
+        public static final int action_settings=0x7f09004e;
         public static final int activity_chooser_view_content=0x7f090023;
+        public static final int addItemToOrder=0x7f09004d;
         public static final int always=0x7f090014;
         public static final int beginOrdering=0x7f090043;
         public static final int beginning=0x7f09001b;
