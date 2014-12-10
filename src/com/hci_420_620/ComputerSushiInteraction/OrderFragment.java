@@ -40,12 +40,17 @@ public class OrderFragment extends Fragment{
 	}
 	
 	 public void addItemToOrder(MenuItem item){
-	    	//this.currentOrder.add(item);
-	    	listAdapter.add(item);
-	    	String itemName = item.getName();
-	    	String toastString = "'" + itemName + "' has been added to your order.";
+	    	if(item != null){
+		    	listAdapter.add(item);
+		    	String itemName = item.getName();
+		    	String toastString = "'" + itemName + "' has been added to your order.";
+		    	showToast(toastString);
+	    	}else{
+	    		showToast("Please select an item to add to the order.");
+	    	}
+	 }
+		public void showToast(String toastString){
 	    	Toast itemAddedToast = Toast.makeText(getActivity().getApplicationContext(), toastString, Toast.LENGTH_SHORT);
 	    	itemAddedToast.show();
-	 }
-
+		}
 }
