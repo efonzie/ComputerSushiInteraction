@@ -16,14 +16,16 @@
 	        android:layout_height="50dp"
 	        android:hint="@string/search"
 	        android:maxLines="1"
+	        android:textSize="16sp"
 	        android:inputType="textNoSuggestions"
 	        android:imeOptions="actionDone"
+	        android:layout_marginLeft="5dp"
 	        />
 	    <Button
 	        android:id="@+id/clearMenuSearch"
 	        android:layout_width="40dp"
 	        android:layout_height="40dp"
-	        android:layout_marginRight="0dp"
+	        android:layout_margin="5dp"
 	        android:layout_gravity="right|center_vertical"
 	        android:background="@drawable/cancel_text" />
 	    

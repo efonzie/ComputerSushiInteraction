@@ -14,31 +14,28 @@
 	
 		<TextView
 			android:id="@+id/itemName"
-			android:layout_width="160dp"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="7"
-			android:paddingBottom="5dp"
-			android:paddingLeft="5dp"
+			android:paddingLeft="10dp"
 			android:paddingTop="5dp"
-			android:textSize="15sp" />
+			android:textSize="14sp" />
 	
 		<TextView
 			android:id="@+id/itemPrice"
-			android:layout_width="40dp"
+			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_weight="3"
-			android:paddingBottom="5dp"
-			android:paddingLeft="5dp"
 			android:paddingTop="5dp"
-			android:textSize="17sp" />
+			android:textSize="14sp"
+			android:gravity="left" />
 	</LinearLayout>
 
 	<TextView
 		android:id="@+id/itemDescription"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:paddingTop="5dp"
-		android:paddingLeft="5dp"
+		android:paddingLeft="10dp"
 		android:paddingBottom="5dp"
 		android:textSize="12sp" />
 
