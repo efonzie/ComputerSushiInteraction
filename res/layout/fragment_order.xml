@@ -18,16 +18,17 @@
         android:textSize="14sp" />
 
     <ListView
-        android:id="@+id/CurrentOrderListView"
+        android:id="@+id/currentOrderListView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
+        android:padding="2dp"
         android:background="@drawable/custom_layout_border" >
 
     </ListView>
     
     <Button
-        android:id="@+id/addItemToOrder"
+        android:id="@+id/submitOrderButton"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"

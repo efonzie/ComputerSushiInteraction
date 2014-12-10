@@ -5,60 +5,101 @@ import java.util.ArrayList;
 import android.R.color;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v7.internal.widget.AdapterViewCompat.OnItemClickListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class OrderAdapter extends ArrayAdapter<MenuItem> {
 
 	private Context context;
 	private int layoutResourceId;
-	private MenuItem _orderItems[];
+	private ArrayList<MenuItem> _orderItems;;
 
 	public OrderAdapter(Context context) {
-		super(context, R.layout.order_item);
+		super(context, R.layout.fragment_order_item);
 		this.context = context;
-		this.layoutResourceId = R.layout.order_item;
+		this.layoutResourceId = R.layout.fragment_order_item;
+		this._orderItems = new ArrayList<MenuItem>();
 	}
 
 	@Override
 	public void add(MenuItem object) {
-		// TODO Auto-generated method stub
+		_orderItems.add(object);
 		super.add(object);
 	}
 	
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public void remove(MenuItem object) {
+		super.remove(object);
+		notifyDataSetChanged();
+	}
+	
+	public void remove(int index) {
+		MenuItem item = _orderItems.remove(index);
+		super.remove(item);
+		notifyDataSetChanged();
+	}
+	
+	@Override
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		final OrderItemViewHolder holder;
 		if(convertView==null){
+			holder = new OrderItemViewHolder();
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
             convertView = inflater.inflate(layoutResourceId, parent, false);
+            
+            holder.itemName = (TextView) convertView.findViewById(R.id.orderItemName);
+            holder.itemPrice = (TextView) convertView.findViewById(R.id.orderItemPrice);
+            holder.deleteItem = (ImageButton)convertView.findViewById(R.id.removeItemFromOrderButton);
+            
+            convertView.setTag(holder);
+		}else{
+			holder = (OrderItemViewHolder) convertView.getTag();
 		}
-        
+		
+		holder.itemName.setTag(position);
+		holder.itemPrice.setTag(position);
+		holder.deleteItem.setTag(position);
+		
 		// set current order text views
         MenuItem menuItem = getItem(position);
         String itemName = menuItem.getName();
         String itemPrice = menuItem.getPriceString();
-        TextView itemNameView = (TextView) convertView.findViewById(R.id.orderItemName);
-        TextView itemPriceView = (TextView) convertView.findViewById(R.id.orderItemPrice);
-        itemNameView.setText(itemName);
-        itemPriceView.setText(itemPrice);
+        holder.itemName.setText(itemName);
+        holder.itemPrice.setText(itemPrice);
         
+        holder.deleteItem.setOnClickListener(new View.OnClickListener() {
+        	
+        	@Override
+        	public void onClick(View v) {
+        		int tag = (int) v.getTag();
+        		if(tag < _orderItems.size()){
+        			remove(tag);
+        			notifyDataSetChanged();
+        		}
+        	}
+        });
         // set background color for even rows
         if(position % 2 == 1){
-        	convertView.setBackgroundColor(color.holo_blue_light);
+        	convertView.setBackgroundColor(Color.LTGRAY);
         }else{
-        	convertView.setBackgroundColor(color.white);
+        	convertView.setBackgroundColor(Color.TRANSPARENT);
         }
+        
         
 		return convertView;
 	}
 
 	@Override
 	public MenuItem getItem(int position) {
-		// TODO Auto-generated method stub
-		return super.getItem(position);
+		return _orderItems.get(position);
 	}
 
 	@Override
@@ -70,6 +111,6 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 	public boolean hasStableIds() {
 		return true;
 	}
-	
-
 }
+
+

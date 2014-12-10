@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.LayoutInflater;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
@@ -33,24 +36,35 @@ public class OrderFragment extends Fragment{
 		
 		listAdapter = new OrderAdapter(this.getActivity());
 		
-		listView = (ListView)view.findViewById(R.id.CurrentOrderListView);
+		listView = (ListView)view.findViewById(R.id.currentOrderListView);
 		listView.setAdapter(listAdapter);
+
+//		listView.setOnItemClickListener(new OnItemClickListener() {
+//
+//			@Override
+//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//				MenuItem orderItem = (MenuItem) listView.getItemAtPosition(position);
+//				showToast("OrderFragment - onItemClick");
+//				
+//			}
+//		});
 		
 		return view;
 	}
 	
-	 public void addItemToOrder(MenuItem item){
-	    	if(item != null){
-		    	listAdapter.add(item);
-		    	String itemName = item.getName();
-		    	String toastString = "'" + itemName + "' has been added to your order.";
-		    	showToast(toastString);
-	    	}else{
-	    		showToast("Please select an item to add to the order.");
-	    	}
-	 }
-		public void showToast(String toastString){
-	    	Toast itemAddedToast = Toast.makeText(getActivity().getApplicationContext(), toastString, Toast.LENGTH_SHORT);
-	    	itemAddedToast.show();
+	public void addItemToOrder(MenuItem item){
+		if(item != null){
+			listAdapter.add(item);
+			String itemName = item.getName();
+			String toastString = "'" + itemName + "' has been added to your order.";
+			showToast(toastString);
+		}else{
+			showToast("Please select an item to add to the order.");
 		}
+	 }
+	 
+	public void showToast(String toastString){
+    	Toast itemAddedToast = Toast.makeText(getActivity().getApplicationContext(), toastString, Toast.LENGTH_SHORT);
+    	itemAddedToast.show();
+	}
 }
