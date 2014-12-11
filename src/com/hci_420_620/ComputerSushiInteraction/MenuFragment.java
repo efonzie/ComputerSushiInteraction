@@ -6,6 +6,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -108,18 +110,15 @@ public class MenuFragment extends Fragment{
 			}
 		});
 		
+		//set up listener to respond to text changed events
 		EditText search = (EditText) view.findViewById(R.id.menuSearch);
-		search.setOnEditorActionListener(new OnEditorActionListener(){
+		search.addTextChangedListener(new TextWatcher(){
+			public void afterTextChanged(Editable s){}
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-			@Override
-			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-				if(actionId == EditorInfo.IME_ACTION_DONE){
-					filterMenu();
-				}
-				
-				return false;
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+				filterMenu();
 			}
-			
 			
 		});
 		
@@ -163,6 +162,11 @@ public class MenuFragment extends Fragment{
 		
 		listAdapter = new MenuAdapter(this.getActivity(), currentDisplay);
 		expListView.setAdapter(listAdapter);
+		
+		//if there are only 1 sections, automatically expand that section
+		if(currentDisplay.size() == 1){
+			expListView.expandGroup(0);
+		}
 		
 	}
 	

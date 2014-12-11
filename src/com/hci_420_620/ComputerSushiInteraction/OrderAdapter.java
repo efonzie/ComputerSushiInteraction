@@ -46,8 +46,14 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 			}
 		}
 		if(!found){
-			_orderItems.add(object);
-			super.add(object);
+			
+			//Make a copy of the object so that we don't mess with the quantity/price stuff on the "original" objects
+			MenuItem itemClone = new MenuItem(object.name, object.description, object.price);
+			
+			_orderItems.add(itemClone);
+			super.add(itemClone);
+			
+			
 		}
 		
 	}
