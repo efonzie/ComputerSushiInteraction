@@ -21,7 +21,7 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 
 	private Context context;
 	private int layoutResourceId;
-	private ArrayList<MenuItem> _orderItems;
+	public ArrayList<MenuItem> _orderItems;
 	
 	
 
@@ -39,7 +39,7 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 		boolean found = false;
 		for(MenuItem item : _orderItems){
 			if(item.description == object.description){
-				item.orderQuantity += 1;
+				item.orderQuantity += object.orderQuantity;
 				notifyDataSetChanged();
 				found = true;
 				break;
@@ -49,6 +49,7 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 			
 			//Make a copy of the object so that we don't mess with the quantity/price stuff on the "original" objects
 			MenuItem itemClone = new MenuItem(object.name, object.description, object.price);
+			itemClone.orderQuantity = object.orderQuantity;
 			
 			_orderItems.add(itemClone);
 			super.add(itemClone);

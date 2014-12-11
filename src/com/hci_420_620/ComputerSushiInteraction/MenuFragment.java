@@ -3,8 +3,8 @@ package com.hci_420_620.ComputerSushiInteraction;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.ListFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -56,7 +56,7 @@ public class MenuFragment extends Fragment{
 		    @Override
 		    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 		    	
-		    	DetailFragment detailFrag = (DetailFragment) getActivity().getFragmentManager().findFragmentById(R.id.detailFragment);
+		    	DetailFragment detailFrag = (DetailFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.detailFragment);
 		    	if(detailFrag != null){
 		    		MenuItem item = (MenuItem)listAdapter.getChild(groupPosition, childPosition);
 		    		selectedItem = item;

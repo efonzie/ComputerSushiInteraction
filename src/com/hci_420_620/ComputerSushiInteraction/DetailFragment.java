@@ -1,6 +1,7 @@
 package com.hci_420_620.ComputerSushiInteraction;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -64,10 +65,15 @@ public class DetailFragment extends Fragment{
 	
 	
 	public void addToOrderButton(View view){
-		OrderFragment orderFrag = (OrderFragment) getActivity().getFragmentManager().findFragmentById(R.id.orderFragment);
+		FragmentManager fragMan = getActivity().getSupportFragmentManager();
+		String currentOrderTag = OrderPagerAdapter.GetFragmentTag(R.id.orderViewPager, 0);
+		OrderFragment orderFrag = (OrderFragment) fragMan.findFragmentByTag(currentOrderTag);
     	if(orderFrag != null){
     		orderFrag.addItemToOrder(selectedItem);
     	}
+    	
+    	MenuActivity menu = (MenuActivity)getActivity();
+    	menu.goToCurrentOrder();
 
     }
 }

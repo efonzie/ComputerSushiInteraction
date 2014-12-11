@@ -2,9 +2,11 @@ package com.hci_420_620.ComputerSushiInteraction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
@@ -24,8 +26,17 @@ public class OrderFragment extends Fragment{
 	
 	OrderAdapter listAdapter;
 	ListView listView;
-	//List<MenuItem> currentOrder;  //current items that haven't been sent to the kitchen yet
-	List<MenuItem> totalOrder; //current items that HAVE been sent to the kitchen
+	List<MenuItem> order;  //current items that are shown in this order fragment
+
+	int orderPage = 0;
+	String orderTitle = "Current";
+	
+	public static OrderFragment newInstance(int page, String title){
+		OrderFragment orderFrag = new OrderFragment();
+		orderFrag.orderPage = page;
+		orderFrag.orderTitle = title;
+		return orderFrag;
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -33,7 +44,7 @@ public class OrderFragment extends Fragment{
 		View view = inflater.inflate(R.layout.fragment_order, container, false);
 		
 		//currentOrder = new ArrayList<MenuItem>();
-		totalOrder = new ArrayList<MenuItem>();
+		order = new ArrayList<MenuItem>();
 		
 		listAdapter = new OrderAdapter(this.getActivity());
 		
@@ -47,15 +58,19 @@ public class OrderFragment extends Fragment{
 			}
 		});
 
-//		listView.setOnItemClickListener(new OnItemClickListener() {
-//
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				MenuItem orderItem = (MenuItem) listView.getItemAtPosition(position);
-//				showToast("OrderFragment - onItemClick");
-//				
-//			}
-//		});
+		Button submitButton = (Button)view.findViewById(R.id.submitOrderButton);
+		
+		if(orderTitle == "Total Order"){
+			submitButton.setText("Checkout");
+		}
+		
+		submitButton.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				submitOrder();
+			}
+		});
 		
 		return view;
 	}
@@ -66,8 +81,6 @@ public class OrderFragment extends Fragment{
 			String itemName = item.getName();
 			String toastString = "'" + itemName + "' has been added to your order.";
 			showToast(toastString);
-			
-		
 			
 		}else{
 			showToast("Please select an item to add to the order.");
@@ -82,7 +95,34 @@ public class OrderFragment extends Fragment{
 	public void updateTotal(){
 		//update total text:
 		String total = String.format("$%.2f",listAdapter.getTotal());
-		TextView totalText = (TextView) getActivity().findViewById(R.id.currentOrderPrice);
+		TextView totalText = (TextView) getView().findViewById(R.id.currentOrderPrice);
 		totalText.setText(total);
+	}
+	
+	public void submitOrder(){
+		if(orderTitle == "Current Order"){
+			FragmentManager fragMan = getActivity().getSupportFragmentManager();
+			String totalOrderTag = OrderPagerAdapter.GetFragmentTag(R.id.orderViewPager, 1);
+			OrderFragment orderFrag = (OrderFragment) fragMan.findFragmentByTag(totalOrderTag);
+			
+			for(MenuItem item : listAdapter._orderItems){
+				orderFrag.addItemToOrder(item);
+			}
+			
+			listAdapter.clear();
+			listAdapter._orderItems.clear();
+			listAdapter.notifyDataSetChanged();
+			
+			orderFrag.listAdapter.notifyDataSetChanged();
+			
+			MenuActivity menu = (MenuActivity) getActivity();
+			menu.goToTotalOrder();
+		}
+		else if(orderTitle == "Total Order"){
+			MenuActivity menu = (MenuActivity) getActivity();
+
+			menu.checkout(listAdapter._orderItems);
+		}
+		
 	}
 }
