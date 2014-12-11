@@ -1,9 +1,11 @@
 package com.hci_420_620.ComputerSushiInteraction;
 
 public class MenuItem {	
+	
 	String name;
 	String description;
 	double price;
+	int orderQuantity = 1; 
 	int imageId = -1;
 	
 	public MenuItem(String name, String description, double price) {
@@ -26,7 +28,8 @@ public class MenuItem {
 	}
 	
 	public String getPriceString() {
-		return String.format("$%.2f",price);
+		double total = price * orderQuantity;
+		return String.format("$%.2f",total);
 	}
 	
 	public void setPrice(double price) {
@@ -43,5 +46,13 @@ public class MenuItem {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public int getOrderQuantity() {
+		return orderQuantity;
+	}
+
+	public void setOrderQuantity(int orderQuantity) {
+		this.orderQuantity = orderQuantity;
 	}
 }

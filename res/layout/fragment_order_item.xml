@@ -13,15 +13,23 @@
         android:layout_weight="0.5"
         android:paddingLeft="5dp"
         android:textSize="12sp"
-        android:gravity="center" />
+        android:gravity="left" />
+    
+    <TextView 
+        android:id="@+id/orderItemQuantity"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.1"
+        android:textSize="12sp"
+        android:gravity="left" />
 
     <TextView
         android:id="@+id/orderItemPrice"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
-        android:layout_weight="0.35"
+        android:layout_weight="0.25"
         android:textSize="12sp"
-        android:gravity="center" />
+        android:gravity="left" />
 
     <TextView
         android:id="@+id/orderItemNote"
@@ -29,7 +37,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="0.1"
         android:textSize="12sp"
-        android:gravity="center" />
+        android:gravity="right" />
 
     <ImageButton
         android:id="@+id/removeItemFromOrderButton"

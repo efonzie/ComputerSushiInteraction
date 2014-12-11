@@ -7,4 +7,5 @@ public class OrderItemViewHolder {
 	public TextView itemName;
 	public TextView itemPrice;
 	public ImageButton deleteItem;
+	public TextView itemQuantity;
 }

@@ -31,8 +31,22 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 
 	@Override
 	public void add(MenuItem object) {
-		_orderItems.add(object);
-		super.add(object);
+		
+		//see if we already have one of these items in the list
+		boolean found = false;
+		for(MenuItem item : _orderItems){
+			if(item.description == object.description){
+				item.orderQuantity += 1;
+				notifyDataSetChanged();
+				found = true;
+				break;
+			}
+		}
+		if(!found){
+			_orderItems.add(object);
+			super.add(object);
+		}
+		
 	}
 	
 	@Override
@@ -56,8 +70,10 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
             convertView = inflater.inflate(layoutResourceId, parent, false);
             
             holder.itemName = (TextView) convertView.findViewById(R.id.orderItemName);
+            holder.itemQuantity = (TextView) convertView.findViewById(R.id.orderItemQuantity);
             holder.itemPrice = (TextView) convertView.findViewById(R.id.orderItemPrice);
             holder.deleteItem = (ImageButton)convertView.findViewById(R.id.removeItemFromOrderButton);
+         
             
             convertView.setTag(holder);
 		}else{
@@ -65,6 +81,7 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 		}
 		
 		holder.itemName.setTag(position);
+		holder.itemQuantity.setTag(position);
 		holder.itemPrice.setTag(position);
 		holder.deleteItem.setTag(position);
 		
@@ -72,8 +89,10 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
         MenuItem menuItem = getItem(position);
         String itemName = menuItem.getName();
         String itemPrice = menuItem.getPriceString();
+        String itemQuantity = Integer.toString(menuItem.getOrderQuantity());
         holder.itemName.setText(itemName);
         holder.itemPrice.setText(itemPrice);
+        holder.itemQuantity.setText(itemQuantity);
         
         holder.deleteItem.setOnClickListener(new View.OnClickListener() {
         	
