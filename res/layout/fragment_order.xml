@@ -27,7 +27,7 @@
 	        	android:layout_height="match_parent"
 	        	android:layout_weight="1"
 	        	android:gravity="right"
-	        	android:text="Total: "
+	        	android:text="Current Total: "
 	        	android:textSize="14sp"/>
 	    <TextView 
 			    android:id="@+id/currentOrderPrice"
@@ -35,7 +35,31 @@
 	        	android:layout_height="match_parent"
 	        	android:layout_weight="1"
 	        	android:gravity="left"
-	        	
+	        	android:textSize="14sp"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+   		android:layout_width="match_parent"
+    	android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:padding="5dp" >
+	    
+	    <TextView 
+			    android:id="@+id/totalText2"
+	        	android:layout_width="0dp"
+	        	android:layout_height="match_parent"
+	        	android:layout_weight="1"
+	        	android:gravity="right"
+	        	android:text="Full Total: "
+	        	android:textSize="14sp"/>
+	    <TextView 
+			    android:id="@+id/totalOrderPrice"
+	        	android:layout_width="0dp"
+	        	android:layout_height="match_parent"
+	        	android:layout_weight="1"
+	        	android:gravity="left"
 	        	android:textSize="14sp"/>
 
     </LinearLayout>

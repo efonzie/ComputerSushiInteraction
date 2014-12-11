@@ -72,6 +72,14 @@ public class OrderFragment extends Fragment{
 			}
 		});
 		
+		//Make current total not visible on the Total Order page
+		if(orderTitle == "Total Order"){
+			TextView currentTotal = (TextView)view.findViewById(R.id.currentOrderPrice);
+			TextView currentTotalLabel =  (TextView)view.findViewById(R.id.totalText);
+			currentTotal.setVisibility(View.GONE);
+			currentTotalLabel.setVisibility(View.GONE);
+		}
+		
 		return view;
 	}
 	
@@ -93,10 +101,36 @@ public class OrderFragment extends Fragment{
 	}
 	
 	public void updateTotal(){
-		//update total text:
-		String total = String.format("$%.2f",listAdapter.getTotal());
-		TextView totalText = (TextView) getView().findViewById(R.id.currentOrderPrice);
-		totalText.setText(total);
+		if(orderTitle == "Current Order"){
+			double currentTotal = getTotal();
+			double fullTotal = currentTotal;
+			
+			//Get the Total Order list to get the overall total from there
+			FragmentManager fragMan = getActivity().getSupportFragmentManager();
+			String totalOrderTag = OrderPagerAdapter.GetFragmentTag(R.id.orderViewPager, 1);
+			OrderFragment totalOrderFrag = (OrderFragment) fragMan.findFragmentByTag(totalOrderTag);
+			fullTotal += totalOrderFrag.getTotal();
+			
+			//Now set the current total
+			TextView currentTotalTextView = (TextView) getView().findViewById(R.id.currentOrderPrice);
+			String currentTotalText = String.format("$%.2f",currentTotal);
+			currentTotalTextView.setText(currentTotalText);
+			
+			//Now set the overall total
+			TextView fullTotalTextView = (TextView) getView().findViewById(R.id.totalOrderPrice);
+			String fullTotalText = String.format("$%.2f",fullTotal);
+			fullTotalTextView.setText(fullTotalText);
+		}
+		else if(orderTitle == "Total Order"){
+			TextView fullTotal = (TextView) getView().findViewById(R.id.totalOrderPrice);
+			String fullTotalText = String.format("$%.2f",listAdapter.getTotal());
+			fullTotal.setText(fullTotalText);
+		}
+		
+	}
+	
+	public double getTotal(){
+		return listAdapter.getTotal();
 	}
 	
 	public void submitOrder(){
