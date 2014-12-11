@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.R.color;
 import android.app.Activity;
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.graphics.Color;
 import android.support.v7.internal.widget.AdapterViewCompat.OnItemClickListener;
 import android.view.LayoutInflater;
@@ -20,7 +21,9 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 
 	private Context context;
 	private int layoutResourceId;
-	private ArrayList<MenuItem> _orderItems;;
+	private ArrayList<MenuItem> _orderItems;
+	
+	
 
 	public OrderAdapter(Context context) {
 		super(context, R.layout.fragment_order_item);
@@ -129,6 +132,22 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 	@Override
 	public boolean hasStableIds() {
 		return true;
+	}
+	
+	@Override
+	public void notifyDataSetChanged(){
+		super.notifyDataSetChanged();
+		
+	}
+	
+	public double getTotal(){
+		double total = 0;
+		
+		for(MenuItem item : _orderItems){
+			total += item.price * item.orderQuantity;
+		}
+		
+		return total;
 	}
 }
 

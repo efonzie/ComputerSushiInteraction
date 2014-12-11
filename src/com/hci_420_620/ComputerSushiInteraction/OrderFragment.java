@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,13 @@ public class OrderFragment extends Fragment{
 		
 		listView = (ListView)view.findViewById(R.id.currentOrderListView);
 		listView.setAdapter(listAdapter);
+		
+		//Register a datasetobserver to check and see when the data changes.
+		listAdapter.registerDataSetObserver(new DataSetObserver(){
+			public void onChanged(){
+				updateTotal();
+			}
+		});
 
 //		listView.setOnItemClickListener(new OnItemClickListener() {
 //
@@ -58,6 +66,9 @@ public class OrderFragment extends Fragment{
 			String itemName = item.getName();
 			String toastString = "'" + itemName + "' has been added to your order.";
 			showToast(toastString);
+			
+		
+			
 		}else{
 			showToast("Please select an item to add to the order.");
 		}
@@ -66,5 +77,12 @@ public class OrderFragment extends Fragment{
 	public void showToast(String toastString){
     	Toast itemAddedToast = Toast.makeText(getActivity().getApplicationContext(), toastString, Toast.LENGTH_SHORT);
     	itemAddedToast.show();
+	}
+	
+	public void updateTotal(){
+		//update total text:
+		String total = String.format("$%.2f",listAdapter.getTotal());
+		TextView totalText = (TextView) getActivity().findViewById(R.id.currentOrderPrice);
+		totalText.setText(total);
 	}
 }
