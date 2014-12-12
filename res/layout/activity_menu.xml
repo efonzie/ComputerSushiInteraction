@@ -55,8 +55,7 @@
 	            android:gravity="center"
 	            android:text="Current Order"
 	            android:textColor="#206BA4"
-	            android:textSize="19sp" 
-	            android:onClick="goToCurrentOrder"/>
+	            android:textSize="19sp" />
 
 	         <TextView
 	             android:id="@+id/totalOrderTab"
@@ -64,7 +63,6 @@
 	             android:layout_height="wrap_content"
 	             android:layout_weight="1"
 	             android:gravity="center"
-	             android:onClick="goToTotalOrder"
 	             android:text="Total Order"
 	             android:textColor="#999999"
 	             android:textSize="19sp" />
