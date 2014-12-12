@@ -52,3 +52,4 @@ proguard/
 
 # Log Files
 *.log
+/project.properties
