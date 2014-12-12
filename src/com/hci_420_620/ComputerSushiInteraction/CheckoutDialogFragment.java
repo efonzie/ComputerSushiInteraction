@@ -26,6 +26,7 @@ public class CheckoutDialogFragment extends DialogFragment {
 		getDialog().setTitle("Checkout");
 		
 		
+		
 		listAdapter = new OrderAdapter(this.getActivity());
 		for(MenuItem item : order){
 			listAdapter.add(item);
@@ -42,7 +43,7 @@ public class CheckoutDialogFragment extends DialogFragment {
 	public void onStart(){
 		super.onStart();
 		
-		getDialog().getWindow().setLayout(1200, 800);
+		getDialog().getWindow().setLayout(1500, 1000);
 		
 	}
 

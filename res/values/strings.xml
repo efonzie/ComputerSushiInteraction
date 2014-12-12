@@ -5,5 +5,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="search">Search</string>
+    <string name="selectPayment">Select a Payment Option</string>
+    <string name="paymentCredit">Credit Card</string>
+    <string name="paymentCash">Cash</string>
+    <string name="paymentCheck">Check</string>
 
 </resources>

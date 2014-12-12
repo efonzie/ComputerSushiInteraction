@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height = "0dp"
-        android:layout_weight = "8">
+        android:layout_weight = "8"
+        android:paddingTop="5dp">
         
         <ListView
 	        android:id="@+id/orderList"
@@ -18,7 +19,90 @@
         <LinearLayout 
 	        android:layout_width="0dp"
 	        android:layout_height="match_parent"
-	        android:layout_weight="1">
+	        android:layout_weight="1"
+	        android:orientation = "vertical">
+	        
+            <TextView 
+                android:id="@+id/checkoutSelectPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/selectPayment"
+                android:textSize = "20dp"/>
+            
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_credit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                    android:gravity="center_horizontal|bottom"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/paymentCredit" />
+
+                <RadioButton
+                    android:id="@+id/radio_cash"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                    android:gravity="center_horizontal|bottom"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/paymentCash" />
+
+                <RadioButton
+                    android:id="@+id/radio_check"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableTop="?android:attr/listChoiceIndicatorSingle"
+                    android:gravity="center_horizontal|bottom"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/paymentCheck" />
+            </RadioGroup>
+            
+            <TextView 
+                android:id="@+id/checkoutPaymentDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="50dp"
+                android:gravity="center"
+                android:text=""
+                android:textSize = "20dp"
+                />
+            
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="20dp">
+                
+                <Button
+			        android:id="@+id/button_selectPayment"
+			        android:layout_width="200dp"
+			        android:layout_height="50dp"
+			        android:layout_centerHorizontal="true"
+			        android:layout_alignParentBottom="true"
+			        android:gravity="center"
+			        android:background="@drawable/begin_ordering_button"
+			        android:padding="10dp"
+			        android:text="Select payment" />
+                
+                
+            </RelativeLayout>
+		   
+            
         </LinearLayout>
 
     </LinearLayout>
