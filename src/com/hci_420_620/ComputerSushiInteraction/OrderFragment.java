@@ -26,7 +26,6 @@ public class OrderFragment extends Fragment{
 	
 	OrderAdapter listAdapter;
 	ListView listView;
-	List<MenuItem> order;  //current items that are shown in this order fragment
 
 	int orderPage = 0;
 	String orderTitle = "Current";
@@ -42,9 +41,6 @@ public class OrderFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		
 		View view = inflater.inflate(R.layout.fragment_order, container, false);
-		
-		//currentOrder = new ArrayList<MenuItem>();
-		order = new ArrayList<MenuItem>();
 		
 		listAdapter = new OrderAdapter(this.getActivity());
 		

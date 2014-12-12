@@ -104,7 +104,9 @@ public class MenuActivity extends FragmentActivity {
 	}
 	
 	public void checkout(ArrayList<MenuItem> items){
-		
+		FragmentManager fragMan = getSupportFragmentManager();
+		CheckoutDialogFragment checkoutFrag = new CheckoutDialogFragment(items);
+		checkoutFrag.show(fragMan, "checkout_fragment");
 	}
 	
 	
