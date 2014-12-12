@@ -49,6 +49,7 @@ public class OrderFragment extends Fragment{
 		
 		//Register a datasetobserver to check and see when the data changes.
 		listAdapter.registerDataSetObserver(new DataSetObserver(){
+			@Override
 			public void onChanged(){
 				updateTotal();
 			}

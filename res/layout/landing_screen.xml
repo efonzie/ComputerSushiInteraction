@@ -3,32 +3,36 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#6BCAE2"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:screenOrientation="landscape"
-    android:background="#adfaff"
     tools:context="com.hci620.touchscreensushi.LandingScreen" >
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingBottom="15dp"
         android:layout_centerInParent="true"
+        android:paddingBottom="15dp"
+        android:paddingTop="5dp"
         android:src="@drawable/landing_screen_sushi" />
 
     <Button
         android:id="@+id/beginOrdering"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/begin_ordering_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/mainbutton"
+        android:textColor="#AFEAAA"
+        android:textSize="30sp"
         android:onClick="beginOrdering"
-        android:text="StartOrdering" />
+        android:text="Start Ordering"
+         />
 
     <TextView
         android:id="@+id/welcomeText"
@@ -38,6 +42,6 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:text="Computer Sushi Interaction"
-        android:textSize="@dimen/abc_text_size_large_material" />
+        android:textSize="32dp" />
 
 </RelativeLayout>
