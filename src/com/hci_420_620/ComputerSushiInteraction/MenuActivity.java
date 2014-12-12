@@ -3,6 +3,7 @@ package com.hci_420_620.ComputerSushiInteraction;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -104,7 +105,8 @@ public class MenuActivity extends FragmentActivity {
 	}
 	
 	public void checkout(ArrayList<MenuItem> items){
-		
+		Intent intent = new Intent(this,CheckoutActivity.class);
+		startActivity(intent);
 	}
 	
 	
