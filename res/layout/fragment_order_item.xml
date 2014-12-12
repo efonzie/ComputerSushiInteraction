@@ -12,7 +12,7 @@
         android:layout_height="fill_parent"
         android:layout_weight="0.5"
         android:paddingLeft="5dp"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:gravity="left" />
     
     <TextView 
@@ -20,7 +20,7 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="0.1"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:gravity="left" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="0.25"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:gravity="left" />
 
     <TextView

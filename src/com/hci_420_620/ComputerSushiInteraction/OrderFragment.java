@@ -30,6 +30,8 @@ public class OrderFragment extends Fragment{
 	int orderPage = 0;
 	String orderTitle = "Current";
 	
+	Toast theToast;
+	
 	public static OrderFragment newInstance(int page, String title){
 		OrderFragment orderFrag = new OrderFragment();
 		orderFrag.orderPage = page;
@@ -42,7 +44,9 @@ public class OrderFragment extends Fragment{
 		
 		View view = inflater.inflate(R.layout.fragment_order, container, false);
 		
-		listAdapter = new OrderAdapter(this.getActivity());
+		boolean showDelete = true;
+		
+		listAdapter = new OrderAdapter(this.getActivity(), showDelete);
 		
 		listView = (ListView)view.findViewById(R.id.currentOrderListView);
 		listView.setAdapter(listAdapter);
@@ -81,20 +85,28 @@ public class OrderFragment extends Fragment{
 	}
 	
 	public void addItemToOrder(MenuItem item){
+		String toastString = "";
 		if(item != null){
 			listAdapter.add(item);
 			String itemName = item.getName();
-			String toastString = "'" + itemName + "' has been added to your order.";
-			showToast(toastString);
+			toastString = "'" + itemName + "' has been added to your order.";
+		}
 			
-		}else{
-			showToast("Please select an item to add to the order.");
+		else toastString = "Please select an item to add to the order.";
+		
+		if(orderTitle == "Current Order"){
+			showToast(toastString);
 		}
 	 }
 	 
 	public void showToast(String toastString){
-    	Toast itemAddedToast = Toast.makeText(getActivity().getApplicationContext(), toastString, Toast.LENGTH_SHORT);
-    	itemAddedToast.show();
+		if(theToast == null){
+			theToast = Toast.makeText(getActivity().getApplicationContext(), toastString, 1000);
+		}
+		else{
+			theToast.setText(toastString);
+		}
+		theToast.show();
 	}
 	
 	public void updateTotal(){
@@ -148,6 +160,8 @@ public class OrderFragment extends Fragment{
 			
 			MenuActivity menu = (MenuActivity) getActivity();
 			menu.goToTotalOrder();
+			
+			showToast("Your order has been sent to the kitchen");
 		}
 		else if(orderTitle == "Total Order"){
 			MenuActivity menu = (MenuActivity) getActivity();

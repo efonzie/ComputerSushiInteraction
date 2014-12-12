@@ -92,16 +92,18 @@ public class MenuActivity extends FragmentActivity {
 		TextView currentOrder = (TextView) this.findViewById(R.id.currentOrderTab);
 		TextView totalOrder = (TextView) this.findViewById(R.id.totalOrderTab);
 		
-		int active = 0xFF999999;
-		int inactive = 0xFF206BA4;
+		int inactive = 0xFF999999;
+		int active = 0xFF206BA4;
 		
 		if(pos==1){
-			int a = active;
-			active=inactive;
-			inactive=a;
+			currentOrder.setTextColor(inactive);
+			totalOrder.setTextColor(active);
 		}
-		currentOrder.setTextColor(active);
-		totalOrder.setTextColor(active);
+		else{
+			currentOrder.setTextColor(active);
+			totalOrder.setTextColor(inactive);
+		}
+		
 	}
 	
 	public void checkout(ArrayList<MenuItem> items){
@@ -114,6 +116,9 @@ public class MenuActivity extends FragmentActivity {
 >>>>>>> branch 'master' of https://github.com/efonzie/ComputerSushiInteraction.git */
 	}
 	
+	public void backToLaunch(){
+		startActivity(new Intent(this, LandingScreen.class));
+	}
 	
 	
 }

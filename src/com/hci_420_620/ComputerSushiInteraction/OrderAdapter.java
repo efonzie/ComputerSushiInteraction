@@ -23,10 +23,13 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
 	private int layoutResourceId;
 	public ArrayList<MenuItem> _orderItems;
 	
+	public boolean showDelete = true;
+	
 	
 
-	public OrderAdapter(Context context) {
+	public OrderAdapter(Context context, boolean delete) {
 		super(context, R.layout.fragment_order_item);
+		this.showDelete = delete;
 		this.context = context;
 		this.layoutResourceId = R.layout.fragment_order_item;
 		this._orderItems = new ArrayList<MenuItem>();
@@ -104,17 +107,22 @@ public class OrderAdapter extends ArrayAdapter<MenuItem> {
         holder.itemPrice.setText(itemPrice);
         holder.itemQuantity.setText(itemQuantity);
         
-        holder.deleteItem.setOnClickListener(new View.OnClickListener() {
-        	
-        	@Override
-        	public void onClick(View v) {
-        		int tag = (int) v.getTag();
-        		if(tag < _orderItems.size()){
-        			remove(tag);
-        			notifyDataSetChanged();
-        		}
-        	}
-        });
+        if(showDelete){
+	        holder.deleteItem.setOnClickListener(new View.OnClickListener() {
+	        	
+	        	@Override
+	        	public void onClick(View v) {
+	        		int tag = (int) v.getTag();
+	        		if(tag < _orderItems.size()){
+	        			remove(tag);
+	        			notifyDataSetChanged();
+	        		}
+	        	}
+	        });
+        }
+        else{
+        	holder.deleteItem.setVisibility(View.GONE);
+        }
         // set background color for even rows
         if(position % 2 == 1){
         	convertView.setBackgroundColor(Color.LTGRAY);
