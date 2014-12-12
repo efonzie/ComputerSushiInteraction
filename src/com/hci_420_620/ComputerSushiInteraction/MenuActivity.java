@@ -92,16 +92,16 @@ public class MenuActivity extends FragmentActivity {
 		TextView currentOrder = (TextView) this.findViewById(R.id.currentOrderTab);
 		TextView totalOrder = (TextView) this.findViewById(R.id.totalOrderTab);
 		
-		int col2 = 0xFF999999;
-		int col1 = 0xFF000000;
+		int active = 0xFF999999;
+		int inactive = 0xFF206BA4;
 		
 		if(pos==1){
-			int a = col1;
-			col1=col2;
-			col2=a;
+			int a = active;
+			active=inactive;
+			inactive=a;
 		}
-		currentOrder.setTextColor(col1);
-		totalOrder.setTextColor(col2);
+		currentOrder.setTextColor(active);
+		totalOrder.setTextColor(active);
 	}
 	
 	public void checkout(ArrayList<MenuItem> items){

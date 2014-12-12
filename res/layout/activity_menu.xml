@@ -1,10 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#EBF4FA"
+    
     android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}" >
 
+    <View
+    android:layout_width="1dp"
+    android:layout_height="fill_parent"
+    android:background="@android:color/darker_gray"/>
+    
    <fragment
        android:id="@+id/menuFragment"
        android:layout_width="0dp"
