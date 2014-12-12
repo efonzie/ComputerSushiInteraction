@@ -150,9 +150,11 @@ public class OrderFragment extends Fragment{
 		}
 		else if(orderTitle == "Total Order"){
 			MenuActivity menu = (MenuActivity) getActivity();
-
+			
 			menu.checkout(listAdapter._orderItems);
-		}
+		//Button checkout = (Button)view.findViewById(R.id.submitOrderButton);
+			
 		
+		}
 	}
 }

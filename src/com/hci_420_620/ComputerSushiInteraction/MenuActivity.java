@@ -3,6 +3,7 @@ package com.hci_420_620.ComputerSushiInteraction;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -107,6 +108,10 @@ public class MenuActivity extends FragmentActivity {
 		FragmentManager fragMan = getSupportFragmentManager();
 		CheckoutDialogFragment checkoutFrag = new CheckoutDialogFragment(items);
 		checkoutFrag.show(fragMan, "checkout_fragment");
+
+		/*Intent intent = new Intent(this,CheckoutActivity.class);
+		startActivity(intent);
+>>>>>>> branch 'master' of https://github.com/efonzie/ComputerSushiInteraction.git */
 	}
 	
 	
